@@ -310,7 +310,7 @@ export class PedidosConsolidadosComponent implements OnInit {
   descargarcsv(IdConsolidadoVentaEmpleado)
   {
     this.appService.getdataconsolidadobyid(IdConsolidadoVentaEmpleado).subscribe((res) => {
-
+ 
       this.appService.GenerarOrdenDeventa(res).subscribe((result)=>{
         this.snackBar.open('Se creo la orden de venta: '+result.tranid,  '×', { panelClass: 'success', verticalPosition: 'top', duration: 3000 });
 
