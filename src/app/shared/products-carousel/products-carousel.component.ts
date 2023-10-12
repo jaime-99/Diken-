@@ -23,6 +23,8 @@ export class ProductsCarouselComponent implements OnInit {
     this.settings = this.appSettings.settings;
   }
 
+
+  @Input () page;
   ngOnInit() {
     let userauth=JSON.parse(localStorage.getItem('datalogin')!);
 
@@ -67,6 +69,7 @@ if(userauth!=undefined)
   }
 
   public openProductDialog(product){
+    const page = this.page
     let dialogRef = this.dialog.open(ProductDialogComponent, {
         data: product,
         panelClass: 'product-dialog',
@@ -74,7 +77,7 @@ if(userauth!=undefined)
     });
     dialogRef.afterClosed().subscribe(product => {
       if(product){
-        this.router.navigate(['/productos', product.id, product.name]);
+        this.router.navigate(['/productos', product.id, product.name,page]);
       }
     });
   }

@@ -37,6 +37,8 @@ export class ProductsComponent implements OnInit,OnChanges {
 
   @Input() product: Product;
 
+  numeroPagina= 0
+
 
 
 
@@ -74,7 +76,7 @@ export class ProductsComponent implements OnInit,OnChanges {
     { name: "21\"", selected: false },
     { name: "23.4\"", selected: false }
   ];
-  public page:any;
+  public page:any = 1;
   public settings: Settings;
   public searchText: string="";
   public banervisible:boolean=false;
@@ -89,7 +91,6 @@ export class ProductsComponent implements OnInit,OnChanges {
               public dialog: MatDialog,
               private router: Router,
               private route: ActivatedRoute,
-              // private mensajeNuloMovimientoService: MensajeNuloMovimientoService,
 
               @Inject(PLATFORM_ID) private platformId: Object) {
     this.settings = this.appSettings.settings;
@@ -102,15 +103,18 @@ export class ProductsComponent implements OnInit,OnChanges {
 
 
         );
+        console.log(this.searchText)
+
 
       }
 
-      // this.mensajeRecibido = this.mensajeNuloMovimientoService.getMessage();
 
 
     }
 
   }
+
+
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -118,11 +122,27 @@ export class ProductsComponent implements OnInit,OnChanges {
   public getBanners(){
     this.appService.getBanners().subscribe(data=>{
       this.banners = data;
+
     })
   }
   ngOnInit() {
 
-this. getBanners();
+
+    this.route.params.subscribe(params => {
+      const page = +params['page'];
+      if (!isNaN(page)) {
+        // Actualiza la variable de página en el componente
+        this.page = page;
+        // Realiza cualquier acción necesaria con la página, como cargar datos
+        this.getProductsEmpleado();
+      }
+    });
+
+
+
+
+
+  this. getBanners();
 
     // this.mensaje();
 
@@ -248,6 +268,20 @@ this. getBanners();
 
   public onPageChanged(event){
     this.page = event;
+
+
+
+    // this.router.navigate(['/productos'], { queryParams: { page: event } });
+
+    if(!this.searchText){
+    this.router.navigate(['/productos', this.page]);
+    }
+    // else{
+    //   this.onChangeCategory(event);
+
+    // }
+
+
     this.getProductsEmpleado();
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0,0);
@@ -266,16 +300,16 @@ this. getBanners();
 
   //para buscar en la barra y solo salgan los productos de empleados
   public getProductsEmpleado(){
- 
+
     if(this.searchText.toUpperCase()=='NULO MOVIMIENTO')
     {
-      
+
       this.banervisible=true;
     }
       this.appService.getProductsApiEmpleado(this.searchText).subscribe(data=>{
       this.products = data;
       // console.log(data)
-        // console.log(this.products)
+        // console.log( "producto que se manda desde products" + this.products)
 
     });
   }
@@ -298,6 +332,12 @@ this. getBanners();
     // mensaje(){
     //   this.mensajeRecibido = this.mensajeNuloMovimientoService.getMessage();
     // }
+
+
+
+    accederAPaginate(){
+
+    }
 
     }
 

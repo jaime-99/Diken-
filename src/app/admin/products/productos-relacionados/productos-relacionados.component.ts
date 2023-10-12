@@ -72,7 +72,7 @@ export class ProductosRelacionadosComponent implements OnInit {
     });
 
 
-    this.enviarValor();
+    // this.enviarValor();
   }
 
   ngAfterViewInit(){
@@ -242,10 +242,10 @@ export class ProductosRelacionadosComponent implements OnInit {
 
   }
 
-  enviarValor() {
-    // Aquí estás emitiendo el valor al evento personalizado 'enviarValorA'
-    this.subCategoria = this.product.SubFamilia
+  // enviarValor() {
+  //   // Aquí estás emitiendo el valor al evento personalizado 'enviarValorA'
+  //   this.subCategoria = this.product.SubFamilia
 
-  }
+  // }
 
 }

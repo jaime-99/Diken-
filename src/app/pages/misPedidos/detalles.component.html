@@ -30,6 +30,7 @@
     <div class="divider"></div>
     <div class="mat-table review-order-table">
       <div class="mat-header-row">
+        <div class="mat-header-cell">Imagen</div>
         <div class="mat-header-cell">Producto</div>
         <div class="mat-header-cell">Precio</div>
         <div class="mat-header-cell">Cantidad</div>
@@ -37,10 +38,12 @@
 
       </div>
       <div *ngFor="let detalle of detalles" class="mat-row">
+
+        <div class="mat-cell"><img [src]="detalle.RutaImagen + detalle.small"></div>
         <div class="mat-cell">{{detalle.Producto}}</div>
-        <div class="mat-cell"style="text-align:right ">${{detalle.Precio | number: '1.2-2'}}</div>
-        <div class="mat-cell" style="margin-left: 80px;">{{detalle.Cantidad|number:'1.2-2'}}</div>
-        <div class="mat-cell"style="text-align: right;">${{detalle.Importe| number: '1.2-2'}}</div>
+        <div class="mat-cell">${{detalle.Precio | number: '1.2-2'}}</div>
+        <div class="mat-cell">{{detalle.Cantidad|number:'1.2-2'}}</div>
+        <div class="mat-cell">${{detalle.Importe| number: '1.2-2'}}</div>
       </div>
     </div>
   </div>

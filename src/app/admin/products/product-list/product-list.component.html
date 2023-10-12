@@ -35,11 +35,10 @@
             </mat-chip-list>
             <img [src]="product.images[0].medium" alt="">
             <!-- <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4> -->
-            <h4 class="category text-muted"> {{product.Familia}} </h4>
+            <h4 class="category text-muted text-truncate"> {{product.Familia}} </h4>
             <div class="title text-truncate">
                 {{product.name}}
             </div>
-
 
             <div fxLayout="row" fxLayoutAlign="space-between center" class="prices">
                 <div fxLayout="column" fxLayoutAlign="center start">

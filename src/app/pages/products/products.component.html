@@ -1,6 +1,6 @@
 
 <mat-sidenav-container>
-    
+
     <!-- <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" class="filter-sidenav" perfectScrollbar>
 
         <mat-accordion displayMode="flat" multi="true">
@@ -64,13 +64,17 @@
             </div>
         </div>
 
+
+        <!-- <app-product  [searchText]="searchText" *ngIf="false"></app-product> -->
+
+
         <div *ngIf="viewType == 'grid'" fxLayout="row wrap" class="products-wrapper">
             <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="col">
                 <mat-card class="product-item text-center">
                     <mat-chip-list *ngIf="product.discount">
                         <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
                     </mat-chip-list>
-                    <a [routerLink]="['/productos', product.id, product.name]" class="image-link">
+                    <a [routerLink]="['/productos', product.id, product.name,page]" class="image-link">
                         <img [src]="product.images[0].small" alt="">
                     </a>
                     <h5 *ngIf="product.SePuedeFraccionar" class="category text-muted">Se pide por pieza : {{product.SePuedeFraccionar?"Si":"NO"}} </h5>
@@ -86,7 +90,7 @@
                     <!-- <h5 class="category text-muted">{{product.SePuedeFraccionar}}</h5> -->
                     <h4 class="category text-muted">{{ ( appService.Data.categories | filterById : product.categoryId )?.name }}</h4>
 
-                    <a [matTooltip]="product.NuloMovimiento === 1 ? 'NULO MOVIMIENTO || ' + product.name : product.name" [routerLink]="['/productos', product.id, product.name]" class="title text-truncate">
+                    <a [matTooltip]="product.NuloMovimiento === 1 ? 'NULO MOVIMIENTO || ' + product.name : product.name" [routerLink]="['/productos', product.id, product.name,numeroPagina]" class="title text-truncate">
                       <span  [ngStyle]="{'color': product.NuloMovimiento === 1 ? 'red' : 'inherit'}">  {{product.name}} </span>
                     </a>
 
@@ -154,6 +158,8 @@
                 </mat-card>
             </div>
         </div>
+
+
 
     </mat-sidenav-content>
 </mat-sidenav-container>

@@ -213,7 +213,7 @@ export class AddProductComponent implements OnInit {
       if(params['id']){
         this.id = params['id'];
         this.getProductById(); // esto trae cada dato de el producto
-        console.log(this.id)
+        // console.log(this.id)
       }
     });
   }
@@ -497,7 +497,7 @@ if (this.id!=undefined){
 
 
       this.appService.agregarFraccionado(Datosfraccionado.ProductoId,Datosfraccionado.CantidadFraccion).subscribe((res)=>{
-        console.log(res);
+        // console.log(res);
       })
 
     }
@@ -509,7 +509,7 @@ if (this.id!=undefined){
     }
 
     this.appService.eliminarFraccionado(DatosFraccionado.FraccionId).subscribe((res)=>{
-      console.log(res)
+      // console.log(res)
     })
 
   }

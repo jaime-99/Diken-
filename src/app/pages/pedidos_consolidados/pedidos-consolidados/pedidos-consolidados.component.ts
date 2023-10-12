@@ -258,7 +258,7 @@ export class PedidosConsolidadosComponent implements OnInit {
               this.appService.UpdateConsolidado(id,Factura,3).subscribe((res)=>{
 
 
-                
+
               })
 
 
@@ -380,7 +380,7 @@ aplicarFiltro() {
   );
 
   if(this.consolidadosFiltrados.length ===0){
-    console.log("no se encontraron consolidados")
+    // console.log("no se encontraron consolidados")
     this.aviso = true;
   }else{
     this.aviso = false
@@ -388,7 +388,7 @@ aplicarFiltro() {
   // this.mostrarBusqueda = true;
 
 
-  console.log(this.consolidadosFiltrados)
+  // console.log(this.consolidadosFiltrados)
 }
 
 

@@ -16,9 +16,13 @@ import { MensajeNuloMovimientoService } from './mensaje-nulo-movimiento.service'
 
 
 export const routes: Routes = [
+
+  { path: ':page', component: ProductsComponent},
   { path: '', component: ProductsComponent, pathMatch: 'full' },
-  { path: ':name', component: ProductsComponent },
-  { path: ':id/:name', component: ProductComponent }
+  
+  { path: ':id/:name/:page', component: ProductComponent },
+  { path: ':id/:name', component: ProductComponent },
+
 ];
 
 @NgModule({

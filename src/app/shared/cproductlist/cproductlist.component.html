@@ -16,7 +16,7 @@
 
 </div> -->
 <div fxLayout="row wrap">
-    <div *ngFor="let product of products | paginate: { itemsPerPage: count, currentPage: page }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="p-1">
+    <div *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: page }" fxFlex="100" [fxFlex.gt-sm]="viewCol" fxFlex.sm="50" class="p-1">
         <mat-card class="product-item text-center">
             <mat-chip-list *ngIf="product.discount">
                 <mat-chip color="warn" selected="true">{{product.discount}}% OFF</mat-chip>
@@ -49,7 +49,7 @@
 <div *ngIf="products.length > 0" fxLayout="row wrap">
     <div fxFlex="100" class="p-1">
         <mat-card class="p-0 text-center">
-            <pagination-controls class="product-pagination" previousLabel="Anterioooooor"
+            <pagination-controls class="product-pagination" previousLabel="Anterior"
             nextLabel="Siguiente" autoHide="true" maxSize="2" (pageChange)="onPageChanged($event)"></pagination-controls>
         </mat-card>
     </div>

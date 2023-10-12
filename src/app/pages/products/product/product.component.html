@@ -34,6 +34,23 @@
 
         <h2 [ngStyle]="{'color': product?.NuloMovimiento === 1 ? 'red' : 'inherit'}">  {{product?.name}}</h2>
 
+          <button *ngIf="product?.NuloMovimiento" mat-raised-button (click)="goBackToList()"> <mat-icon color="primary">arrow_back</mat-icon>
+          Volver a la lista de productos</button>
+
+          <button *ngIf="!product?.NuloMovimiento"  mat-raised-button  [routerLink]="['/productos',this.numeroPagina]"> <mat-icon color="primary">arrow_back</mat-icon>
+          Volver a la lista de productos</button>
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="py-1 lh">
             <p><span class="text-muted fw-500">Clase: </span><span>{{  product?.Clase  }}</span></p>
             <p><span class="text-muted fw-500">Familia: </span><span>{{  product?.Familia  }}</span></p>
@@ -63,7 +80,7 @@
         </div>
 
         <!-- todo checar esto -->
-        <div class="py-1">
+        <div  class="py-1">
             <app-controls [product]="product"></app-controls>
         </div>
 
@@ -225,7 +242,7 @@
 <div class="py-2 mt-2">
     <h2>Productos Relacionados</h2>
     <div class="divider"></div>
-    <app-products-carousel [products]="relatedProducts"></app-products-carousel>
+    <app-products-carousel [products]="relatedProducts" [page]="this.numeroPagina" ></app-products-carousel>
 </div>
 <div class="py-2 mt-2">
     <h2>Productos Sustitutos</h2>

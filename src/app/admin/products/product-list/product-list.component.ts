@@ -39,6 +39,7 @@ export class ProductListComponent implements OnInit {
     let queryParams: any = {};
     queryParams.textSearch=this.searchText;
 
+
     if(this.categoria ==1){
     this.getAllProducts();
     }else if(this.categoria==2){
@@ -46,6 +47,9 @@ export class ProductListComponent implements OnInit {
     }
     else if(this.categoria ==3){
       this.verProductosNuloMovimiento();
+    }
+    else if(this.categoria ===undefined){
+      this.getAllProducts();
     }
 
     // setTimeout(() => {
@@ -103,7 +107,7 @@ export class ProductListComponent implements OnInit {
 
   verProductosNuloMovimiento(){
     this.appService.getProductsApiNuloMovimiento(this.searchText).subscribe(data=>{
-      console.log(data)
+      // console.log(data)
       this.products = data;
       this.categoria = 3
     })
@@ -118,6 +122,7 @@ export class ProductListComponent implements OnInit {
   menuItemClick(event,menu){
 
     // console.log(menu)
+
 
     if(menu==1){
       this.getAllProducts();

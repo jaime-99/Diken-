@@ -29,8 +29,6 @@ export class detalles implements OnInit {
   regresarAVentas(){
     this.idVenta = 0; // Restablecer el valor de idVenta para ocultar los detalles
     this.regresar.emit(); // todo esto hace que se regrese a pedidos
-
-
   }
 
   ocultarDetalles(){

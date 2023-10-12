@@ -44,7 +44,7 @@ export class CproductlistComponent implements OnInit {
 
 
     this.searchText = (event.target as HTMLInputElement).value;
-    console.log(this.searchText);
+    // console.log(this.searchText);
     this.appService.search.next(this.searchText);
 
     let queryParams: any = {};
@@ -68,18 +68,18 @@ export class CproductlistComponent implements OnInit {
     //! y cuando sea sustituto llame a la otra
 
     this.appService.verSustitutos(id).subscribe((res)=>{
-    console.log(res);
+    // console.log(res);
 
     const productoInfo = res.productoInfo; // debo obtener el valor de sustitutoId
 
     if (res.productoInfo && res.productoInfo.length > 0) {
       for (const producto of res.productoInfo) {
         const productoSustitutoId = producto.ProductoSustitutoId;
-        console.log('ProductoSustitutoId:', productoSustitutoId);
+        // console.log('ProductoSustitutoId:', productoSustitutoId);
         this.idSustituto= productoSustitutoId
       }
 
-         console.log(this.idSustituto)
+        //  console.log(this.idSustituto)
 
          if(this.EsRelacionado===1){
           this.verRelacionados(id)
@@ -97,12 +97,12 @@ export class CproductlistComponent implements OnInit {
   verRelacionados(id){
     // es para ver los productos relacionados
     this.appService.verRelacionados(id).subscribe((res)=>{
-      console.log(res);
+      // console.log(res);
 
       if (res.productoInfo && res.productoInfo.length > 0) {
         for (const producto of res.productoInfo) {
           const productoRelacionadoId = producto.ProductoRelacionadoId;
-          console.log('ProductoRelacionadoId:', productoRelacionadoId);
+          // console.log('ProductoRelacionadoId:', productoRelacionadoId);
           this.idRelacionado= productoRelacionadoId
           // console.log(id);
           this.remove()
@@ -122,9 +122,9 @@ export class CproductlistComponent implements OnInit {
     if(this.EsRelacionado===0){
       const id = this.idSustituto
     this.appService.eliminarSustitutos(id).subscribe((res)=>{
-      console.log(res);
-      console.log(this.idSustituto);
-      this.snackBar.open('se elimino el producto sustituto '  ,  '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
+      // console.log(res);
+      // console.log(this.idSustituto);
+      // this.snackBar.open('se elimino el producto sustituto '  ,  '×', { panelClass: 'error', verticalPosition: 'top', duration: 3000 });
 
 
     })
@@ -132,7 +132,7 @@ export class CproductlistComponent implements OnInit {
 
   else if(this.EsRelacionado===1){
       const id = this.idRelacionado
-    console.log(' es relacionado')
+    // console.log(' es relacionado')
     this.appService.eliminarRelacionado(id).subscribe((res)=>{
       // console.log(res)
       // console.log(this.idRelacionado)

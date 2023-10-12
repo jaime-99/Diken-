@@ -116,7 +116,7 @@ export class PagesComponent implements OnInit {
   public search(event:any){
 
     this.searchText = (event.target as HTMLInputElement).value;
-    console.log(this.searchText);
+    // console.log(this.searchText);
     this.appService.search.next(this.searchText);
 
     let queryParams: any = {};
