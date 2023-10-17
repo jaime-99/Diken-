@@ -38,9 +38,10 @@
 }
 
 
-@media (max-width: 959px) {
+@media screen and (max-width: 767px) { 
     .banners-container{
         .banner{
+           
             .info{
                 padding: 20px 0px;
                 h1{
