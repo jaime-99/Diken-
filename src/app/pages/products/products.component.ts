@@ -19,7 +19,7 @@ import { MensajeNuloMovimientoService } from './mensaje-nulo-movimiento.service'
 export class ProductsComponent implements OnInit,OnChanges {
   @ViewChild('sidenav', { static: true }) sidenav: any;
   public sidenavOpen:boolean = true;
-  public searchtext1 = "jalador";
+  // public searchtext1 = "jalador";
   private sub: any;
   public viewType: string = 'grid';
   public viewCol: number = 25;
@@ -308,7 +308,7 @@ export class ProductsComponent implements OnInit,OnChanges {
     }
       this.appService.getProductsApiEmpleado(this.searchText).subscribe(data=>{
       this.products = data;
-      // console.log(data)
+      console.log(this.products)
         // console.log( "producto que se manda desde products" + this.products)
 
     });

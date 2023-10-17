@@ -36,7 +36,7 @@ export interface autloginResponse
     NumeroEmpleado:string,
     Correo:string,
     Telefono:string,
-    Extension:string,   
+    Extension:string,
     Password:string,
     EsActivo:string,
     FechaCreacion:string,
@@ -53,8 +53,8 @@ export interface autloginResponse
     Departamento:string,
     EsServicio:string,
     data:any,
- 
-    
+
+
 
 
 }
@@ -69,8 +69,8 @@ export interface AuthResponse
     Correo:string,
     contrasenia:string,
     Activo:string,
-    
-    
+
+
     ok: boolean;
     uid?: string;
     name?: string;

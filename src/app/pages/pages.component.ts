@@ -132,15 +132,16 @@ export class PagesComponent implements OnInit {
 
     // alerta de no se encontraron productos
 
-    const searchTextLowerCase = this.searchText1.toLowerCase(); // Convertir el texto de búsqueda a minúsculas
+    const searchTextLowerCase = this.searchText.toLowerCase(); // Convertir el texto de búsqueda a minúsculas
 
     const productFound = this.products.some(product => {
     const nameLowerCase = product.name.toLowerCase(); // Convertir el nombre del producto a minúsculas
     const codigoDikenLowerCase = product.CodigoDiken.toLowerCase(); // Convertir el códigoDiken a minúsculas
     const textSearch = product.TextSearch.toLowerCase();
 
-    return nameLowerCase.includes(searchTextLowerCase) || codigoDikenLowerCase.includes(searchTextLowerCase)
-    || textSearch.includes(searchTextLowerCase)
+    return nameLowerCase.includes(searchTextLowerCase) ||
+    codigoDikenLowerCase.includes(searchTextLowerCase) ||
+    textSearch.includes(searchTextLowerCase)
       });
 
       if (!productFound) {
