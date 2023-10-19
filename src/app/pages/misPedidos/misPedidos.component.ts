@@ -41,6 +41,7 @@ export class misPedidos  implements OnInit{
   tieneCuenta:boolean = false;
 
   @ViewChild('detallesComponent') detallesComponent: detalles;
+  documento: any;
 
 
 
@@ -152,10 +153,12 @@ export class misPedidos  implements OnInit{
 
     //Aqui ira el ejemplo, para mostrar el id
 
-    ejemplo(id):void{
+    ejemplo(id,documento):void{
 
       this.mostrarDetallesComponent = true;
       this.idDetalles = id
+
+      this.documento = documento
 
       //console.log(this.idDetalles);
 

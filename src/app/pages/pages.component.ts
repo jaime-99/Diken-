@@ -122,7 +122,7 @@ export class PagesComponent implements OnInit {
     let queryParams: any = {};
     queryParams.textSearch=this.searchText;
     this.router.routeReuseStrategy.shouldReuseRoute = function () { return false; }
-
+    
 
     this.router.onSameUrlNavigation='reload';
     this.router.navigate(['/productos',this.searchText],{queryParams:queryParams});

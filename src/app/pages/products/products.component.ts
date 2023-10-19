@@ -295,7 +295,6 @@ export class ProductsComponent implements OnInit,OnChanges {
 
     // }
 
-
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0,0);
     }
