@@ -23,7 +23,7 @@
         <th>Numero Empelado</th>
         <th>Nombre</th>
         <th>Fecha de venta</th>
-        <th style="text-align: left;">Total con IVA</th>
+        <th>Total con IVA</th>
         <th>Estatus de la venta</th>
         <th>Documento</th>
         <th>Acciones</th>
@@ -38,7 +38,7 @@
         <td>{{ NumeroEmpleado }}</td>
         <td>{{ Nombre }}</td>
         <td>{{ venta.Fecha | date :'dd/MM/yyyy' }}</td>
-        <td style="text-align: right;">${{venta.Total * 1.16 | number : '1.2-2'}}</td>
+        <td>${{venta.Total * 1.16 | number : '1.2-2'}}</td>
         <td><strong>{{venta.Estatus}}</strong> </td>
         <td><strong>{{venta.Documento}}</strong> </td>
 
@@ -110,7 +110,7 @@
       <td>{{ ventasColaboradores.Numero_Empleado }}</td>
       <td>{{ ventasColaboradores.Nombre }}</td>
       <td>{{ ventasColaboradores.Fecha | date :'dd/MM/yyyy' }}</td>
-      <td style="text-align: right;">${{ventasColaboradores.Total | number : '1.2-2'}}</td>
+      <td>${{ventasColaboradores.Total | number : '1.2-2'}}</td>
       <td><strong>{{ventasColaboradores.Estatus}}</strong> </td>
       <td><strong>{{ventasColaboradores.Documento}}</strong> </td>
 
