@@ -152,9 +152,11 @@ export class ControlsComponent implements OnInit {
       if(currentProduct)
       {
         let countLocal=1/product.CantidadFraccion;
+
         if((currentProduct.cartCount + countLocal) <= this.product.availibilityCount){
-          product.cartCount = parseFloat( (currentProduct.cartCount + countLocal).toFixed(2));
-          product.cartCount2=parseFloat( (currentProduct.cartCount2+this.count).toFixed(2));
+          product.cartCount = parseFloat( (currentProduct.cartCount + countLocal).toFixed(3));
+          product.cartCount2=parseFloat( (currentProduct.cartCount2+this.count).toFixed(3));
+          alert(product.cartCount2);
           if(product.cartCount2%product.CantidadFraccion===0)
           {
 
@@ -170,7 +172,7 @@ export class ControlsComponent implements OnInit {
       }
       else{
         console.log(product);
-        let countLocal2=parseFloat(( 1/product.CantidadFraccion).toFixed(2));
+        let countLocal2=parseFloat(( 1/product.CantidadFraccion).toFixed(3));
 
         product.cartCount=countLocal2;
         product.cartCount2=this.count;
