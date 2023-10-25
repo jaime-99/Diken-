@@ -19,7 +19,7 @@ import { MensajeNuloMovimientoService } from './mensaje-nulo-movimiento.service'
 export class ProductsComponent implements OnInit,OnChanges {
   @ViewChild('sidenav', { static: true }) sidenav: any;
   public sidenavOpen:boolean = true;
-  public searchtext1 = "jalador";
+  // public searchtext1 = "jalador";
   private sub: any;
   public viewType: string = 'grid';
   public viewCol: number = 25;
@@ -128,15 +128,28 @@ export class ProductsComponent implements OnInit,OnChanges {
   ngOnInit() {
 
 
+    // this.route.params.subscribe(params => {
+    //   const page = +params['page'];
+    //   if (!isNaN(page)) {
+    //     // Actualiza la variable de página en el componente
+    //     this.page = page;
+    //     // Realiza cualquier acción necesaria con la página, como cargar datos
+    //     // this.getProductsEmpleado();
+    //   }
+    // });
     this.route.params.subscribe(params => {
       const page = +params['page'];
       if (!isNaN(page)) {
-        // Actualiza la variable de página en el componente
-        this.page = page;
-        // Realiza cualquier acción necesaria con la página, como cargar datos
-        this.getProductsEmpleado();
+        // Verificar si "page" es un número en el rango válido para la paginación
+        if (page >= 1 && page <= 56) { // Ajusta MAX_PAGE según tus necesidades
+          // Actualiza la variable de página en el componente
+          this.page = page;
+          // Realiza cualquier acción necesaria con la página, como cargar datos
+          // this.getProductsEmpleado();
+        }
       }
     });
+
 
 
 
@@ -276,13 +289,12 @@ export class ProductsComponent implements OnInit,OnChanges {
     if(!this.searchText){
     this.router.navigate(['/productos', this.page]);
     }
+    this.getProductsEmpleado();
     // else{
     //   this.onChangeCategory(event);
 
     // }
 
-
-    this.getProductsEmpleado();
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0,0);
     }
@@ -308,7 +320,7 @@ export class ProductsComponent implements OnInit,OnChanges {
     }
       this.appService.getProductsApiEmpleado(this.searchText).subscribe(data=>{
       this.products = data;
-      // console.log(data)
+      console.log(this.products)
         // console.log( "producto que se manda desde products" + this.products)
 
     });

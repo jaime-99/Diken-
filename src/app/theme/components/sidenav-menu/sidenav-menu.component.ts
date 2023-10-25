@@ -81,6 +81,7 @@ export class SidenavMenuComponent implements OnInit {
 
 
     const perfilesAMostrar = [
+
       { perfil: 2, titulo: 'ADMINISTRACION' },
       { perfil: 4, titulo: 'CONSOLIDADOS' },
       { perfil: 5, titulo: 'NULO MOVIMIENTO' },
@@ -100,6 +101,7 @@ export class SidenavMenuComponent implements OnInit {
       // Filtra los perfiles a mostrar en base al usuario
       perfilesAMostrar.forEach((perfil) => {
         this.appService1.obtenerPerfil(perfil.perfil).subscribe((res) => {
+          console.log( "tipo de perfil"+ res)
           if (res !== null && res.includes(userauth.data.INUsuarioId)) {
             if (perfil.titulo === 'ADMINISTRACION') {
               this.mostrarApartado = true;
@@ -116,6 +118,9 @@ export class SidenavMenuComponent implements OnInit {
         });
 
 
+      });
+      this.parentMenu = this.menuItems.filter(item => {
+        return item.title === 'PRODUCTOS' || item.title === 'MIS PEDIDOS' || item.title === 'Cerrar Sesion' || item.title==='TIENDITA VENTA EMPLEADO' || titulosAMostrar.includes(item.title);
       });
     }
 

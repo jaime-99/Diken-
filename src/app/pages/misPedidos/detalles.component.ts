@@ -22,6 +22,7 @@ export class detalles implements OnInit {
   detalles =[]
 
   @Input() idVenta: number = 0;
+  @Input() documento: number
 
   @Output() regresar: EventEmitter<void> = new EventEmitter<void>();
 
@@ -39,6 +40,7 @@ export class detalles implements OnInit {
   obtenerDetalles(){
     const detalleId = {
       detalleId:this.idVenta
+
     }
 
     this.appService.getDetallesPorVentaEmpleado(detalleId.detalleId).subscribe((res)=>{

@@ -9,9 +9,9 @@
 <body>
 
 <!-- todo es para mostrar el detalle de cada venta -->
-  <app-detalles #detallesComponent *ngIf="mostrarDetallesComponent" [idVenta]="idDetalles" (regresar)="regresarDesdeDetalles()"  ></app-detalles>
+  <app-detalles #detallesComponent *ngIf="mostrarDetallesComponent" [idVenta]="idDetalles" [documento]="documento" (regresar)="regresarDesdeDetalles()"  ></app-detalles>
 
-  <mat-tab-group mat-align-tabs="start">
+  <mat-tab-group *ngIf="!mostrarDetallesComponent"  mat-align-tabs="start">
   <mat-tab label="MIS PEDIDOS">
 
   <div *ngIf="mostrarDetallesComponent ==false" class="table-container">
@@ -23,7 +23,7 @@
         <th>Numero Empelado</th>
         <th>Nombre</th>
         <th>Fecha de venta</th>
-        <th style="text-align: left;">Total</th>
+        <th>Total con IVA</th>
         <th>Estatus de la venta</th>
         <th>Documento</th>
         <th>Acciones</th>
@@ -38,7 +38,7 @@
         <td>{{ NumeroEmpleado }}</td>
         <td>{{ Nombre }}</td>
         <td>{{ venta.Fecha | date :'dd/MM/yyyy' }}</td>
-        <td style="text-align: right;">${{venta.Total | number : '1.2-2'}}</td>
+        <td>${{venta.Total * 1.16 | number : '1.2-2'}}</td>
         <td><strong>{{venta.Estatus}}</strong> </td>
         <td><strong>{{venta.Documento}}</strong> </td>
 
@@ -47,7 +47,7 @@
             <button *ngIf="venta.IdEstatusVentaEmpleado === 1" mat-raised-button color="warn" (click)="mostrarMensajeAlerta(venta.VentaEmpleadoId)">Cancelar</button>
             <div class="espacio"></div> <!-- Agregar un espacio vertical -->
 
-          <button class="boton_detalles"  (click)="ejemplo(venta.VentaEmpleadoId)" mat-raised-button color="primary" matTooltip="Ver detalles">
+          <button class="boton_detalles"  (click)="ejemplo(venta.VentaEmpleadoId,venta.Documento)" mat-raised-button color="primary" matTooltip="Ver detalles">
               Detalles
           </button>
 
@@ -110,7 +110,7 @@
       <td>{{ ventasColaboradores.Numero_Empleado }}</td>
       <td>{{ ventasColaboradores.Nombre }}</td>
       <td>{{ ventasColaboradores.Fecha | date :'dd/MM/yyyy' }}</td>
-      <td style="text-align: right;">${{ventasColaboradores.Total | number : '1.2-2'}}</td>
+      <td>${{ventasColaboradores.Total | number : '1.2-2'}}</td>
       <td><strong>{{ventasColaboradores.Estatus}}</strong> </td>
       <td><strong>{{ventasColaboradores.Documento}}</strong> </td>
 

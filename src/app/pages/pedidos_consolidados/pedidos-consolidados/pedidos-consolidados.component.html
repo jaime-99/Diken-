@@ -108,9 +108,9 @@
       <tr *ngFor="let detalleVenta of detalleVentasArray;let i = index">
         <td  class="td-2"> {{detalleVenta.codigoDiken}} </td>
         <td  class="td-2">{{detalleVenta.producto}} </td>
-        <td  class="td-2" style="text-align: right;">${{ detalleVenta.precio | number : '1.2-2'  }} </td>
+        <td  class="td-2" >${{ detalleVenta.precio | number : '1.2-2'  }} </td>
         <td  class="td-2">{{detalleVenta.cantidad}} </td >
-        <td  class="td-2" style="text-align: right;">{{detalleVenta.importe | number : '1.2-2'}} </td>
+        <td  class="td-2">{{detalleVenta.importe | number : '1.2-2'}} </td>
         <td  class="td-2">{{detalleVenta.empleado}} </td>
         <td  class="td-2">{{detalleVenta.usuario}} </td>
         <td  class="td-2"> <button  mat-raised-button color="warn"     [disabled]="detalleVenta.eliminado ||  numPedido.get('Pedido').invalid"  (click)="eliminarDetalleVenta(i)">Eliminar</button></td>
@@ -153,7 +153,7 @@
             <td class="td-1">{{ consolidado.IdConsolidadoVentaEmpleado }}</td>
             <td class="td-1">{{ consolidado.Empresa +" "+consolidado.IdTipoNomina}}</td>
             <td class="td-1"> {{consolidado.NumPedidos}} </td>
-            <td class="td-1"style="text-align: right;">${{ consolidado.TotalConsolidado | number: '1.2-2'}}</td>
+            <td class="td-1">${{ consolidado.TotalConsolidado | number: '1.2-2'}}</td>
             <td class="td-1">{{ consolidado.Fecha  | date: 'dd/MM/yyyy' }}</td>
             <td class="td-1"><strong>{{ consolidado.NombreEstatus }}</strong></td>
             <td class="td-1"><strong>{{ consolidado.NumeroFactura }}</strong></td>
@@ -246,7 +246,7 @@
             <td class="td-1">{{ consolidado.IdConsolidadoVentaEmpleado }}</td>
             <td class="td-1">{{ consolidado.Empresa+" "+consolidado.IdTipoNomina }}</td>
             <td class="td-1"> {{consolidado.NumPedidos}} </td>
-            <td class="td-1" style="text-align: right;">${{ consolidado.TotalConsolidado | number: '1.2-2'}}</td>
+            <td class="td-1">${{ consolidado.TotalConsolidado | number: '1.2-2'}}</td>
             <td class="td-1">{{ consolidado.Fecha  | date: 'dd/MM/yyyy' }}</td>
             <td class="td-1"><strong>{{ consolidado.NombreEstatus }}</strong></td>
             <td class="td-1"><strong>{{ consolidado.NumeroFactura }}</strong></td>

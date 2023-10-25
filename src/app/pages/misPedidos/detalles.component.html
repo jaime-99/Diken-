@@ -3,6 +3,7 @@
 
 
 <h2>Detalles del pedido numero : {{idVenta}} </h2>
+<h2>Factura : {{documento}} </h2>
 <div>
 <button mat-raised-button color="primary" (click)="regresarAVentas()">Regresar a Pedidos</button>
 </div>
@@ -35,15 +36,19 @@
         <div class="mat-header-cell">Precio</div>
         <div class="mat-header-cell">Cantidad</div>
         <div class="mat-header-cell">Importe</div>
+        <div class="mat-header-cell">Importe con IVA</div>
 
       </div>
       <div *ngFor="let detalle of detalles" class="mat-row">
 
-        <div class="mat-cell"><img [src]="detalle.RutaImagen + detalle.small"></div>
+        <!-- <div class="mat-cell"><img [src]="detalle.RutaImagen + detalle.small"></div> -->
+        <div class="mat-cell"><img [src]="detalle.RutaImagen ? detalle.RutaImagen + detalle.small : 'ruta/de/imagen/no/disponible.jpg'" alt="Imagen no disponible"></div>
+
         <div class="mat-cell">{{detalle.Producto}}</div>
         <div class="mat-cell">${{detalle.Precio | number: '1.2-2'}}</div>
         <div class="mat-cell">{{detalle.Cantidad|number:'1.2-2'}}</div>
         <div class="mat-cell">${{detalle.Importe| number: '1.2-2'}}</div>
+        <div class="mat-cell">${{detalle.Importe * 1.16| number: '1.2-2'}}</div>
       </div>
     </div>
   </div>

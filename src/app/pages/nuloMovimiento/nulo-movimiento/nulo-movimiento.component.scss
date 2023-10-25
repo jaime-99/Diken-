@@ -3,5 +3,49 @@ table {
 }
 
 
-//para dar para abajo en la tabla
+.example-container {
+  // height: 400px;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .example-container {
+    overflow-x: auto;
+  }
+  table {
+    font-size: 14px;
+    width: 100%;
+  }
+  th, td {
+    border: none;
+  }
+  .mat-header-cell, .mat-cell {
+    padding: 7px; /* Reduce el espacio entre las columnas en dispositivos móviles */
+  }
+
+
+}
 

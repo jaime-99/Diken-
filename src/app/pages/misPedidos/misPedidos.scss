@@ -99,8 +99,9 @@ table{
   td:nth-of-type(3):before { content: "Nombre"; }
   td:nth-of-type(4):before { content: "Fecha de Venta"; }
   td:nth-of-type(5):before { content: "Total"; }
-  td:nth-of-type(6):before { content: "Status de la venta"; }
-  td:nth-of-type(7):before { content: "Acciones"; }
+  td:nth-of-type(6):before { content: "Estatus de la venta"; }
+  td:nth-of-type(7):before { content: "Documento"; }
+  td:nth-of-type(8):before { content: "Acciones"; }
 
 }
 
