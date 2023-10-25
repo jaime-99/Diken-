@@ -156,7 +156,7 @@ export class ControlsComponent implements OnInit {
         if((currentProduct.cartCount + countLocal) <= this.product.availibilityCount){
           product.cartCount = parseFloat( (currentProduct.cartCount + countLocal).toFixed(3));
           product.cartCount2=parseFloat( (currentProduct.cartCount2+this.count).toFixed(3));
-          
+
           if(product.cartCount2%product.CantidadFraccion===0)
           {
 
