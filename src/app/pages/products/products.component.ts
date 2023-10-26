@@ -84,6 +84,7 @@ export class ProductsComponent implements OnInit,OnChanges {
   mensajeRecibido:any;
 
   verSoloNulo = false;
+  pageNuloMovimiento: any;
 
   constructor(public appSettings:AppSettings,
               private activatedRoute: ActivatedRoute,
@@ -103,7 +104,7 @@ export class ProductsComponent implements OnInit,OnChanges {
 
 
         );
-        console.log(this.searchText)
+        // console.log(this.searchText)
 
 
       }
@@ -126,6 +127,7 @@ export class ProductsComponent implements OnInit,OnChanges {
     })
   }
   ngOnInit() {
+
 
 
     // this.route.params.subscribe(params => {
@@ -281,15 +283,22 @@ export class ProductsComponent implements OnInit,OnChanges {
 
   public onPageChanged(event){
     this.page = event;
-
+    this.pageNuloMovimiento = event
 
 
     // this.router.navigate(['/productos'], { queryParams: { page: event } });
 
     if(!this.searchText){
     this.router.navigate(['/productos', this.page]);
+    }else{
+      // this.pageNuloMovimiento
+      // let queryParams: any = {};
+      // queryParams.searchText = this.searchText;
+      // this.router.navigate(['/productos',this.searchText, this.pageNuloMovimiento]);
+      // this.router.navigate(['/productos',this.searchText,this.page], { queryParams: queryParams });
+
     }
-    this.getProductsEmpleado();
+    // this.getProductsEmpleado();
     // else{
     //   this.onChangeCategory(event);
 
@@ -317,10 +326,12 @@ export class ProductsComponent implements OnInit,OnChanges {
     {
 
       this.banervisible=true;
+
+
     }
       this.appService.getProductsApiEmpleado(this.searchText).subscribe(data=>{
       this.products = data;
-      console.log(this.products)
+      // console.log(this.products)
         // console.log( "producto que se manda desde products" + this.products)
 
     });

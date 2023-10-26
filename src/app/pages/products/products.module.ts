@@ -19,7 +19,9 @@ export const routes: Routes = [
 
   { path: ':page', component: ProductsComponent},
   { path: '', component: ProductsComponent, pathMatch: 'full' },
-  
+  { path: ':searchText/:page', component: ProductsComponent, pathMatch: 'full' },
+
+
   { path: ':id/:name/:page', component: ProductComponent },
   { path: ':id/:name', component: ProductComponent },
 
