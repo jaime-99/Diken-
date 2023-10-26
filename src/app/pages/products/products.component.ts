@@ -130,6 +130,7 @@ export class ProductsComponent implements OnInit,OnChanges {
 
 
 
+
     // this.route.params.subscribe(params => {
     //   const page = +params['page'];
     //   if (!isNaN(page)) {
@@ -157,7 +158,7 @@ export class ProductsComponent implements OnInit,OnChanges {
 
 
 
-  this. getBanners();
+  this.getBanners();
 
     // this.mensaje();
 
@@ -283,26 +284,26 @@ export class ProductsComponent implements OnInit,OnChanges {
 
   public onPageChanged(event){
     this.page = event;
-    this.pageNuloMovimiento = event
 
 
     // this.router.navigate(['/productos'], { queryParams: { page: event } });
 
     if(!this.searchText){
     this.router.navigate(['/productos', this.page]);
-    }else{
-      // this.pageNuloMovimiento
-      // let queryParams: any = {};
-      // queryParams.searchText = this.searchText;
-      // this.router.navigate(['/productos',this.searchText, this.pageNuloMovimiento]);
-      // this.router.navigate(['/productos',this.searchText,this.page], { queryParams: queryParams });
+    } else{
+    //   // this.pageNuloMovimiento
+    //   // let queryParams: any = {};
+    //   // queryParams.searchText = this.searchText;
+    //   // this.router.navigate(['/productos',this.searchText, this.pageNuloMovimiento]);
+    //   // this.router.navigate(['/productos',this.searchText,this.page], { queryParams: queryParams });
 
-    }
+    // }
     // this.getProductsEmpleado();
     // else{
     //   this.onChangeCategory(event);
 
     // }
+    }
 
     if (isPlatformBrowser(this.platformId)) {
       window.scrollTo(0,0);

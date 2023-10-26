@@ -156,7 +156,7 @@ export class ProductComponent implements OnInit {
 
     window.history.back();
 
-    this.router.navigate(['/productos',this.numeroPagina]);
+    // this.router.navigate(['/productos',this.numeroPagina]);
 
 
 
