@@ -113,7 +113,7 @@ export class ControlsComponent implements OnInit {
       this.changeQuantity(obj);
     }
 
-    console.log(this.product.SePuedeFraccionar)
+    // console.log(this.product.SePuedeFraccionar)
 
 
     }
@@ -223,8 +223,6 @@ export class ControlsComponent implements OnInit {
   // this.compraAgregada.emit(product);
   // this.compraSeleccionada = product;
   // this.mostrarDetalles = true;
-
-
 
   }
 

@@ -29,11 +29,11 @@
       <div class="mat-cell" *ngIf="!hidePrice">
         {{ product.newPrice | number : '1.2-2' }}
       </div>
-      <div  class="mat-cell text-muted">
-        <p *ngIf="product.SePuedeFraccionar===1"  > {{product?.cartCount}} </p>
+      <div *ngIf="product.SePuedeFraccionar===1"   class="mat-cell text-muted">
+        <p   > {{product?.cartCount}} </p>
       </div>
-      <div class="mat-cell text-muted">
-        <app-controls *ngIf="product.SePuedeFraccionar===0" [product]="product" [type]="'wish'" (onQuantityChange)="updateCart($event)"></app-controls>
+      <div *ngIf="product.SePuedeFraccionar===0" class="mat-cell text-muted">
+        <app-controls  [product]="product" [type]="'wish'" (onQuantityChange)="updateCart($event)"></app-controls>
       </div>
       <div class="mat-cell" *ngIf="!hidePrice">
         ${{ total[product.id] | number : '1.2-2' }}

@@ -34,10 +34,10 @@
 
         <h2 [ngStyle]="{'color': product?.NuloMovimiento === 1 ? 'red' : 'inherit'}">  {{product?.name}}</h2>
 
-          <button *ngIf="product?.NuloMovimiento" mat-raised-button (click)="goBackToList()"> <mat-icon color="primary">arrow_back</mat-icon>
+          <button  mat-raised-button color="primary" *ngIf="product?.NuloMovimiento" mat-raised-button (click)="goBackToList()"> <mat-icon>arrow_back</mat-icon>
           Volver a la lista de productos</button>
 
-          <button *ngIf="!product?.NuloMovimiento"  mat-raised-button  [routerLink]="['/productos',this.numeroPagina]"> <mat-icon color="primary">arrow_back</mat-icon>
+          <button mat-raised-button color="primary" *ngIf="!product?.NuloMovimiento"   [routerLink]="['/productos',this.numeroPagina]"> <mat-icon>arrow_back</mat-icon>
           Volver a la lista de productos</button>
 
 
@@ -80,9 +80,9 @@
         </div>
 
         <!-- todo checar esto -->
-        <div  class="py-1">
+        <!-- <div  class="py-1">
             <app-controls [product]="product"></app-controls>
-        </div>
+        </div> -->
 
         <div class="divider"></div>
 
