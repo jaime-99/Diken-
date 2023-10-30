@@ -2,6 +2,7 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MaService } from 'src/app/admin-mesadeayuda/ma.service';
 import { AppService } from 'src/app/app.service';
+import { AccesoService } from 'src/app/guards/acceso.service';
 
 import { MensajeNuloMovimientoService } from 'src/app/pages/products/mensaje-nulo-movimiento.service';
 
@@ -27,7 +28,7 @@ export class MenuComponent implements OnInit {
 
   constructor(public appService:MaService,public router:Router,
    public appService1: AppService,
-   private mensajeNuloMovimientoService:MensajeNuloMovimientoService) { }
+   private mensajeNuloMovimientoService:MensajeNuloMovimientoService, private AccesoAdmin:AccesoService) { }
 
   ngOnInit()  {
     this.mostrarAdmin();
@@ -66,6 +67,13 @@ GotoUniversidadDiken()
           }
         }
     });
+  }
+
+  GotoAdministracion(){
+
+    this.AccesoAdmin.setAccesoPorBoton();
+
+    this.router.navigate(['/admin/products/product-list']);
   }
 
   public search(event:any){

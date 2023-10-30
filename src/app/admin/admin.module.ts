@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
+import { AccessGuard } from '../guards/access.guard';
 import { InputFileConfig, InputFileModule } from 'ngx-input-file';
 const config: InputFileConfig = {
   fileAccept: '*'
@@ -39,7 +40,9 @@ export const routes = [
       { path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)},
       { path: 'reviews', loadChildren: () => import('./reviews/reviews.module').then(m => m.ReviewsModule), data: { breadcrumb: 'Reviews' } }  ,
       { path: 'organigrama', loadChildren: () => import('./organigrama/organigrama.module').then(m => m.OrganigramaModule), data: { breadcrumb: 'Organigrama' } }
-    ]
+    ],
+    canActivate: [AccessGuard] // Aplicar el guardia a esta ruta
+
   }
 ];
 

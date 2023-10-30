@@ -134,7 +134,7 @@
   <a mat-button routerLink="/pedidosConsolidados" routerLinkActive="horizontal-active-link" *ngIf="mostrarApartado" [routerLinkActiveOptions]="{exact:true}">Pedidos consolidados</a>
   <a mat-button routerLink="/nuloMovimiento" routerLinkActive="horizontal-active-link" *ngIf="mostrarMovimientosNulo" [routerLinkActiveOptions]="{exact:true}">Nulo Movimiento</a>
 
-  <a mat-button routerLink="/admin/products/product-list" routerLinkActive="horizontal-active-link" *ngIf="mostrarAdministrador" [routerLinkActiveOptions]="{exact:true}">Administracion</a>
+  <a mat-button   (click)="GotoAdministracion()" *ngIf="mostrarAdministrador" [routerLinkActiveOptions]="{exact:true}">Administracion</a>
 
 
 </mat-toolbar>
