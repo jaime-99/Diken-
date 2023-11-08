@@ -41,7 +41,7 @@ export const routes = [
       { path: 'reviews', loadChildren: () => import('./reviews/reviews.module').then(m => m.ReviewsModule), data: { breadcrumb: 'Reviews' } }  ,
       { path: 'organigrama', loadChildren: () => import('./organigrama/organigrama.module').then(m => m.OrganigramaModule), data: { breadcrumb: 'Organigrama' } }
     ],
-    canActivate: [AccessGuard] // Aplicar el guardia a esta ruta
+    // canActivate: [AccessGuard] // Aplicar el guardia a esta ruta
 
   }
 ];
