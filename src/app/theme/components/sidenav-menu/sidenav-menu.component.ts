@@ -5,7 +5,7 @@ import { Route, Router } from '@angular/router';
 import { SidenavMenu } from './sidenav-menu.model';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatMenu } from '@angular/material/menu';
-
+import { AccesoService } from 'src/app/guards/acceso.service';
 
 
 
@@ -29,7 +29,8 @@ export class SidenavMenuComponent implements OnInit {
 
 
 
-  constructor(private sidenavMenuService:SidenavMenuService, public appService1:AppService,  private router: Router ) { }
+  constructor(private sidenavMenuService:SidenavMenuService, public appService1:AppService,  private router: Router,
+    private AccesoAdmin:AccesoService ) { }
 
   ngOnInit() {
     // this.parentMenu = this.menuItems.filter(item => item.parentId == this.menuParentId); //!esto muestra las opciones
@@ -58,6 +59,7 @@ export class SidenavMenuComponent implements OnInit {
     this.sidenavMenuService.toggleMenuItem(menuId);
     this.sidenavMenuService.closeOtherSubMenus(this.menuItems, menuId);
 
+    this.AccesoAdmin.setAccesoPorBoton();
 
 
     // this.searchText = category;
@@ -101,7 +103,7 @@ export class SidenavMenuComponent implements OnInit {
       // Filtra los perfiles a mostrar en base al usuario
       perfilesAMostrar.forEach((perfil) => {
         this.appService1.obtenerPerfil(perfil.perfil).subscribe((res) => {
-          console.log( "tipo de perfil"+ res)
+          // console.log( "tipo de perfil"+ res)
           if (res !== null && res.includes(userauth.data.INUsuarioId)) {
             if (perfil.titulo === 'ADMINISTRACION') {
               this.mostrarApartado = true;
