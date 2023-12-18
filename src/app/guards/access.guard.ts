@@ -15,7 +15,7 @@ export class AccessGuard implements CanActivate {
       return true;
     } else {
       // El usuario no ha accedido a través de un botón, redirigir a la página de inicio.
-      this.router.navigate(['/productos']); // Cambia '/inicio' por la ruta que desees.
+      this.router.navigate(['/sign-in']); // Cambia '/inicio' por la ruta que desees.
       return false;
     }
   }

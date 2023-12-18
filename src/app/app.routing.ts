@@ -11,7 +11,8 @@ import { formularioPassModule } from './pages/formularioPass/formularioPass.comp
 import { pedidosConsolidadosModule } from './pages/pedidos_consolidados/pedidos-consolidados/pedidos.component.module';
 import { ManualDeUsuarioModule } from './pages/manual-de-usuario/manualDeUsuarioPDF.component.module';
 import { NuloMovimientoModule } from './pages/nuloMovimiento/nulo-movimiento/nulo-movimiento.module';
-
+import {AccessGuard} from './guards/access.guard'
+import { CaducaContraModule } from './pages/caducaContra/caducaContra.module';
 
 export const routes: Routes = [
 
@@ -41,8 +42,8 @@ export const routes: Routes = [
             { path: 'contact', loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule), data: { breadcrumb: 'ContactO' } },
             //{ path: 'sign-in', loadChildren: () => import('./pages/sign-in/sign-in.module').then(m => m.SignInModule), data: { breadcrumb: 'Inicio de sesión ' } },
             { path: 'brands', loadChildren: () => import('./pages/brands/brands.module').then(m => m.BrandsModule), data: { breadcrumb: 'Brands' } },
-            { path: 'productos', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule), data: { breadcrumb: 'Todos los Productos' } },
-            { path: 'catalogo',loadChildren:()=>import('./pages/catalogos/catalogos.module').then(m=>m.CatalogosModule),data:{breadcrumb:'Catálogo Alimentos'}},
+            { path: 'productos', loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule), canActivate: [ AccessGuard ], data: { breadcrumb: 'Todos los Productos' }  },
+            { path: 'catalogo',loadChildren:()=>import('./pages/catalogos/catalogos.module').then(m=>m.CatalogosModule), data:{breadcrumb:'Catálogo Alimentos'}},
             { path: 'catalogoscadenas',loadChildren:()=>import('./pages/catalogoscadenas/catalogoscadenas.module').then(m=>m.CatalogoscadenasModule),data:{breadcrumb:'Catálogo Cadenas'}},
             { path: 'catalogosindustrial',loadChildren:()=>import('./pages/catalogosindustrial/catalogosindustrial.module').then(m=>m.CatalogosindustrialModule),data:{breadcrumb:'Catálogo Industrial'}},
             { path: 'quienessomos',loadChildren:()=>import('./pages/quienessomos/quienessomos.module').then(m=>m.QuienessomosModule),data:{breadcrumb:'Quienes somos'}},
@@ -64,6 +65,7 @@ export const routes: Routes = [
     },
     { path: 'modificarPass', loadChildren: () => import('./pages/modificarPass/modificarPass.module').then(m => modificarPassModule)},
     { path: 'formularioPass', loadChildren: () => import('./pages/formularioPass/formularioPass.component.module').then(m => formularioPassModule)},
+    { path: 'caduca_contras', loadChildren: () => import('./pages/caducaContra/caducaContra.module').then(m => CaducaContraModule)},
 
     { path:'sign-in',loadChildren:()=>import('./pages/sign-in/sign-in.module').then(m=>m.SignInModule)},
     { path: 'landing', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule) },

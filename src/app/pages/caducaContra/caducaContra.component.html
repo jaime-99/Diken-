@@ -1,0 +1,27 @@
+<div class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
+  <h3 class="mat-h3 text-center">Tu contraseña ha caducado, favor de cambiarla</h3>
+
+  <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+    <mat-form-field class="form-group">
+      <mat-label for="currentPassword">Current Password</mat-label>
+      <input matInput type="password" formControlName="currentPassword" />
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <mat-label for="newPassword">New Password</mat-label>
+      <input matInput type="password" formControlName="newPassword" />
+    </mat-form-field>
+
+    <mat-form-field class="form-group">
+      <mat-label for="confirmNewPassword">Confirm New Password</mat-label>
+      <input matInput type="password" formControlName="confirmNewPassword" />
+      <div *ngIf="changePasswordForm.hasError('passwordsNotMatch')" class="mat-error">
+        Passwords do not match.
+      </div>
+    </mat-form-field>
+
+    <button mat-raised-button type="submit" [disabled]="changePasswordForm.invalid" color="primary">
+      Change Password
+    </button>
+  </form>
+</div>
