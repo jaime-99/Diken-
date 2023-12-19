@@ -1,4 +1,4 @@
-<div class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
+<div *ngIf="!pantalla" class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
   <h3 class="mat-h3 text-center">Tu contraseña ha caducado, favor de cambiarla</h3>
 
   <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()" style="margin-top: 20px;">
@@ -22,6 +22,9 @@
             <mat-label for="newPassword">Nueva Contraseña</mat-label>
             <input matInput type="password" formControlName="newPassword" />
           </mat-form-field>
+          <div *ngIf="changePasswordForm.get('newPassword').touched && iguales" class="mat-error">
+            Las contraseña nueva debe ser diferente a la pasada
+          </div>
         </div>
       </div>
 
@@ -45,3 +48,17 @@
     </div>
   </form>
 </div>
+
+
+<div *ngIf="pantalla" class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
+
+  <h3  class="mat-h3 text-center" >Has Cambiado tu contraseña</h3>
+
+
+  <button mat-raised-button color="primary" type="button" routerLink="" >Iniciar Sesion</button>
+
+</div>
+
+
+
+

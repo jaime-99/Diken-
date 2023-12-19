@@ -15,8 +15,13 @@ export class CaducaContraComponent implements OnInit {
   changePasswordForm: FormGroup;
   contraVieja = 'contrasenia';
   oldPasswordInvalid: boolean = false;
-passwordsNotMatch: boolean = false;
+  passwordsNotMatch: boolean = false;
   nuevaContrasenia: any;
+  iguales:boolean = false;
+  idDeUsuario: string = '';
+
+  pantalla :boolean = false;
+
 
 
 
@@ -26,8 +31,9 @@ passwordsNotMatch: boolean = false;
 
   ngOnInit(): void {
     let userauth = JSON.parse(localStorage.getItem("datalogin")!);
+    console.log(userauth)
+    this.idDeUsuario = userauth.data.INUsuarioId
     this.contraVieja = userauth.data.password
-    console.log("esta es la contrasniea vieja", this.contraVieja)
     this.changePasswordForm = this.formBuilder.group({
       currentPassword: ['', Validators.required],
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -44,12 +50,15 @@ passwordsNotMatch: boolean = false;
       const currentPassword = formGroup.get('currentPassword').value;
       const newPassword = formGroup.get('newPassword').value;
       const hashedPassword = Md5.hashStr(currentPassword).toString();
+      const newPasswordsecret = Md5.hashStr(newPassword).toString();
 
       const confirmNewPassword = formGroup.get('confirmNewPassword').value;
       this.nuevaContrasenia = confirmNewPassword
 
       this.oldPasswordInvalid = formGroup.get('currentPassword').touched && hashedPassword !== this.contraVieja;
       this.passwordsNotMatch = formGroup.get('confirmNewPassword').touched && newPassword !== confirmNewPassword;
+      this.iguales = formGroup.get('newPassword').touched && newPasswordsecret ===hashedPassword
+
 
       if (this.oldPasswordInvalid) {
         return { oldPasswordInvalid: true };
@@ -57,6 +66,15 @@ passwordsNotMatch: boolean = false;
       if(this.passwordsNotMatch){
         return {passwordsNotMatch: true};
       }
+
+      if(newPasswordsecret ==hashedPassword){
+        return {iguales:true}
+      }
+
+      return newPassword === confirmNewPassword ? null : { passwordsNotMatch: true };
+
+
+
 
       // return this.passwordsNotMatch ? { passwordsNotMatch: true } : null;
     }
@@ -67,16 +85,22 @@ passwordsNotMatch: boolean = false;
 
       const nueva = Md5.hashStr(this.nuevaContrasenia).toString();
       console.log(nueva)
+      this.pantalla = true;
 
       if(this.changePasswordForm.valid){
 
         const formData = {
-          p_UsuarioId:'1128',
+          p_UsuarioId:this.idDeUsuario,
           p_Password: nueva
         }
 
         this.appService.cambiarContraseniaNuevo(formData).subscribe((res)=>{
-          console.log(res)
+          // console.log(res)
+
+          this.appService.updateFechaCad(formData.p_UsuarioId).subscribe(()=>{
+
+          })
+
         })
 
 

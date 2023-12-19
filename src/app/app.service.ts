@@ -544,6 +544,15 @@ public GetCarteraPorFactura(id:any,division:any,oficina:any,asesor:any,cliente:a
           return this.http.post<any>( url, body );
         }
 
+        updateFechaCad(id){ //es para actualizar la fecha de caducidad de contrasenia
+          const url=`https://www.dikeninternational.com/dikenecommerce/api/ventas/updateCaducidadContra.php`;
+          const body = {id}
+          return this.http.put<any>(url,body)
+        }
+
+
+
+
 
 
         // colocare para obtener admin de ventaEmpleados
