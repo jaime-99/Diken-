@@ -22,6 +22,10 @@ export class CaducaContraComponent implements OnInit {
 
   pantalla :boolean = false;
 
+  hide1 = true;
+  hide2 = true;
+  hide3 = true;
+
 
 
 
@@ -84,8 +88,7 @@ export class CaducaContraComponent implements OnInit {
     onSubmit(){
 
       const nueva = Md5.hashStr(this.nuevaContrasenia).toString();
-      console.log(nueva)
-      this.pantalla = true;
+      // console.log(nueva)
 
       if(this.changePasswordForm.valid){
 
@@ -96,6 +99,8 @@ export class CaducaContraComponent implements OnInit {
 
         this.appService.cambiarContraseniaNuevo(formData).subscribe((res)=>{
           // console.log(res)
+          this.pantalla = true;
+
 
           this.appService.updateFechaCad(formData.p_UsuarioId).subscribe(()=>{
 

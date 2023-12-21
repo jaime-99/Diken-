@@ -1,4 +1,4 @@
-<div *ngIf="!pantalla" class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
+<div *ngIf="!pantalla"  class="mat-elevation-z2" style="padding: 20px; max-width: 400px; margin: auto;">
   <h3 class="mat-h3 text-center">Tu contraseña ha caducado, favor de cambiarla</h3>
 
   <form [formGroup]="changePasswordForm" (ngSubmit)="onSubmit()" style="margin-top: 20px;">
@@ -8,7 +8,10 @@
         <div fxLayout="column">
           <mat-form-field>
             <mat-label for="currentPassword">Contraseña Antigua</mat-label>
-            <input matInput type="password" formControlName="currentPassword" />
+            <input matInput [type]="hide3 ? 'password' : 'text'" formControlName="currentPassword" />
+            <button mat-icon-button matSuffix (click)="hide3 = !hide3" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide3">
+              <mat-icon>{{hide3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
           <div *ngIf="changePasswordForm.get('currentPassword').touched && oldPasswordInvalid" class="mat-error">
             La contraseña actual no es válida.
@@ -20,10 +23,17 @@
         <div fxLayout="column">
           <mat-form-field>
             <mat-label for="newPassword">Nueva Contraseña</mat-label>
-            <input matInput type="password" formControlName="newPassword" />
+            <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="newPassword"/>
+            <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+              <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
           <div *ngIf="changePasswordForm.get('newPassword').touched && iguales" class="mat-error">
             Las contraseña nueva debe ser diferente a la pasada
+          </div>
+          <div *ngIf="changePasswordForm.get('newPassword').touched && changePasswordForm.get('newPassword').hasError('minlength')"
+                  class="mat-error">
+              La contraseña debe tener al menos 6 caracteres.
           </div>
         </div>
       </div>
@@ -32,7 +42,10 @@
         <div fxLayout="column">
           <mat-form-field>
             <mat-label for="confirmNewPassword">Confirmar Nueva Contraseña</mat-label>
-            <input matInput type="password" formControlName="confirmNewPassword" />
+            <input matInput [type]="hide2 ? 'password' : 'text'" formControlName="confirmNewPassword" />
+            <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
           <div *ngIf="changePasswordForm.get('confirmNewPassword').touched && passwordsNotMatch" class="mat-error">
             Las contraseñas no coinciden.
